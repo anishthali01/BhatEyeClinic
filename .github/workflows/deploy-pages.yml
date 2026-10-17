@@ -1,0 +1,58 @@
+name: Deploy Angular app to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: Web/package-lock.json
+
+      - name: Install frontend dependencies
+        run: npm ci --prefix Web
+
+      - name: Configure public API URL
+        if: ${{ vars.PUBLIC_API_BASE_URL != '' }}
+        env:
+          PUBLIC_API_BASE_URL: ${{ vars.PUBLIC_API_BASE_URL }}
+        run: |
+          node -e 'const fs = require("node:fs"); const file = "Web/src/index.html"; const html = fs.readFileSync(file, "utf8"); fs.writeFileSync(file, html.replace("http://localhost:5021/api", process.env.PUBLIC_API_BASE_URL));'
+
+      - name: Build Angular app
+        run: npm run build --prefix Web -- --base-href /BhatEyeClinic/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: Web/dist/bhat-eye-clinic-web/browser
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

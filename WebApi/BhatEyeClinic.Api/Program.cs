@@ -10,7 +10,7 @@ builder.Services.AddCors(options =>
 {
 	options.AddPolicy("AngularFrontend", policy =>
 	{
-		policy.WithOrigins("http://localhost:4200")
+		policy.WithOrigins("http://localhost:4200", "https://anishthali01.github.io")
 			.AllowAnyHeader()
 			.AllowAnyMethod();
 	});

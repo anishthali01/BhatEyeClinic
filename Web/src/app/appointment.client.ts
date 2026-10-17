@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { apiBaseUrl } from './api-url';
 
 export interface CreateAppointment {
   fullName: string;
@@ -18,6 +19,6 @@ export class AppointmentClient {
   private readonly http = inject(HttpClient);
 
   create(request: CreateAppointment): Observable<AppointmentConfirmation> {
-    return this.http.post<AppointmentConfirmation>('http://localhost:5021/api/appointments', request);
+    return this.http.post<AppointmentConfirmation>(`${apiBaseUrl}/appointments`, request);
   }
 }

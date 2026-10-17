@@ -8,9 +8,9 @@ import { RouterLink } from '@angular/router';
 })
 export class HomePage implements OnInit, OnDestroy {
   protected readonly slides = [
-    { src: '/image/eye-exam-clinic.jpg', label: 'A patient during an eye examination' },
-    { src: '/image/slit-lamp-exam.jpg', label: 'A patient receiving a slit-lamp eye exam' },
-    { src: '/image/eye-exam-consultation.jpg', label: 'An optometrist examining a patient' },
+    { src: 'image/eye-exam-clinic.jpg', label: 'A patient during an eye examination' },
+    { src: 'image/slit-lamp-exam.jpg', label: 'A patient receiving a slit-lamp eye exam' },
+    { src: 'image/eye-exam-consultation.jpg', label: 'An optometrist examining a patient' },
   ];
 
   protected readonly activeSlide = signal(0);
