@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Comprehensive Eye Exam",
+    "description": "A routine assessment of vision and overall eye health.",
+    "durationMinutes": 45,
+    "displayOrder": 1
+  },
+  {
+    "id": 2,
+    "name": "Pediatric Eye Care",
+    "description": "Age-appropriate vision and eye health assessment for children.",
+    "durationMinutes": 30,
+    "displayOrder": 2
+  },
+  {
+    "id": 3,
+    "name": "Cataract Consultation",
+    "description": "An evaluation and discussion of cataract care options.",
+    "durationMinutes": 45,
+    "displayOrder": 3
+  }
+]

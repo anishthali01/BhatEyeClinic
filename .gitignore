@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+**/node_modules/
+Web/.angular/
+Web/dist/
+**/*.db
+**/*.db-shm
+**/*.db-wal
+.DS_Store

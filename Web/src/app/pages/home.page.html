@@ -1,0 +1,25 @@
+<section class="home-page page-band" aria-labelledby="home-title">
+  <div class="home-backdrop" aria-hidden="true">
+    @for (slide of slides; track slide.src; let index = $index) {
+      <img [src]="slide.src" [alt]="slide.label" [class.is-active]="activeSlide() === index" />
+    }
+  </div>
+
+  <div class="page-inner home-inner">
+    <p class="eyebrow"><span class="eyebrow-line"></span> Dr Bhat Eye Clinic</p>
+    <h1 id="home-title">See well.<br /><em>Live fully.</em></h1>
+    <p class="home-intro">Thoughtful eye care, centered on you.</p>
+    <div class="home-actions">
+      <a class="primary-link" routerLink="/appointment">Book an appointment <span aria-hidden="true">&#8594;</span></a>
+      <a class="text-link" routerLink="/services">Browse services <span aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="home-note" aria-label="About the clinic">
+  <div class="home-note-copy">
+    <p class="eyebrow"><span class="eyebrow-line"></span> Care, considered</p>
+    <p>Good eye care begins with a conversation.</p>
+  </div>
+  <a routerLink="/about">Get to know the clinic <span aria-hidden="true">&#8594;</span></a>
+</section>

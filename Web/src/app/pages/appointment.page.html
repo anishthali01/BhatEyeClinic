@@ -1,0 +1,90 @@
+<section class="content-page appointment-page" aria-labelledby="appointment-title">
+  <div class="page-inner appointment-inner">
+    <p class="eyebrow"><span class="eyebrow-line"></span> Appointment request</p>
+    <h1 id="appointment-title">Book a time<br />for <em>your care.</em></h1>
+    <p class="page-lead">Share a few details and choose a preferred appointment time.</p>
+
+    @if (confirmation()) {
+      <p class="form-message success-message" role="status">{{ confirmation() }}</p>
+    }
+    @if (errorMessage()) {
+      <p class="form-message error-message" role="alert">{{ errorMessage() }}</p>
+    }
+
+    <form class="appointment-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-field full-width">
+        <label for="full-name">Full name</label>
+        <input
+          id="full-name"
+          type="text"
+          formControlName="fullName"
+          autocomplete="name"
+          maxlength="120"
+          required
+          [attr.aria-invalid]="form.controls.fullName.invalid && form.controls.fullName.touched"
+          aria-describedby="full-name-error"
+        />
+        @if (form.controls.fullName.invalid && form.controls.fullName.touched) {
+          <span class="field-error" id="full-name-error">Enter your full name.</span>
+        }
+      </div>
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="age">Age</label>
+          <input
+            id="age"
+            type="number"
+            formControlName="age"
+            min="0"
+            max="120"
+            step="1"
+            inputmode="numeric"
+            required
+            [attr.aria-invalid]="form.controls.age.invalid && form.controls.age.touched"
+            aria-describedby="age-error"
+          />
+          @if (form.controls.age.invalid && form.controls.age.touched) {
+            <span class="field-error" id="age-error">Enter an age from 0 to 120.</span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="appointment-date">Preferred date</label>
+          <input
+            id="appointment-date"
+            type="date"
+            formControlName="date"
+            [min]="minDate"
+            required
+            [attr.aria-invalid]="form.controls.date.invalid && form.controls.date.touched"
+            aria-describedby="date-error"
+          />
+          @if (form.controls.date.invalid && form.controls.date.touched) {
+            <span class="field-error" id="date-error">Choose a date from today onward.</span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="appointment-time">Preferred time</label>
+          <input
+            id="appointment-time"
+            type="time"
+            formControlName="time"
+            required
+            [attr.aria-invalid]="form.controls.time.invalid && form.controls.time.touched"
+            aria-describedby="time-error"
+          />
+          @if (form.controls.time.invalid && form.controls.time.touched) {
+            <span class="field-error" id="time-error">Choose a preferred time.</span>
+          }
+        </div>
+      </div>
+
+      <button class="submit-appointment" type="submit" [disabled]="isSubmitting()">
+        {{ isSubmitting() ? 'Submitting...' : 'Submit appointment request' }}
+        <span aria-hidden="true">&#8594;</span>
+      </button>
+    </form>
+  </div>
+</section>

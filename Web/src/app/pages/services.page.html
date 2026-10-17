@@ -1,0 +1,28 @@
+<section class="content-page services-page" aria-labelledby="services-title">
+  <div class="page-inner">
+    <p class="eyebrow"><span class="eyebrow-line"></span> Explore services</p>
+    <h1 id="services-title">Care for your <em>sight.</em></h1>
+    <p class="page-lead">Browse the services currently offered at Dr Bhat Eye Clinic.</p>
+
+    @if (isLoading()) {
+      <p class="service-status" role="status">Loading clinic services...</p>
+    } @else if (hasLoadError()) {
+      <p class="service-status error" role="alert">Clinic services are temporarily unavailable. Please try again shortly.</p>
+    } @else if (services().length === 0) {
+      <p class="service-status">No services are available right now.</p>
+    } @else {
+      <div class="service-list">
+        @for (service of services(); track service.id; let index = $index) {
+          <article class="service-row">
+            <span class="service-number">{{ (index + 1).toString().padStart(2, '0') }}</span>
+            <div class="service-copy">
+              <h2>{{ service.name }}</h2>
+              <p>{{ service.description }}</p>
+            </div>
+            <span class="service-duration">{{ service.durationMinutes }} min</span>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>

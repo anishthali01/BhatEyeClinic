@@ -1,0 +1,31 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <a class="brand" routerLink="/" aria-label="Dr Bhat Eye Clinic home">
+    <span class="brand-mark" aria-hidden="true">B</span>
+    <span>Dr Bhat Eye Clinic</span>
+  </a>
+  <nav aria-label="Main navigation">
+    <a routerLink="/care" routerLinkActive="active" ariaCurrentWhenActive="page">Our care</a>
+    <a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About the clinic</a>
+    <a routerLink="/services" routerLinkActive="active" ariaCurrentWhenActive="page">
+      Explore services <span aria-hidden="true">&#8599;</span>
+    </a>
+    <a class="nav-action booking-link" routerLink="/appointment" routerLinkActive="active" ariaCurrentWhenActive="page">
+      Book an appointment
+    </a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <a class="brand" routerLink="/">
+    <span class="brand-mark" aria-hidden="true">B</span>
+    <span>Dr Bhat Eye Clinic</span>
+  </a>
+  <span>Care for the way you see.</span>
+  <a routerLink="/" class="back-to-top">Home &#8593;</a>
+</footer>
