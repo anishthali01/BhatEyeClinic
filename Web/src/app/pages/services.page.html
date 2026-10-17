@@ -1,8 +1,16 @@
 <section class="content-page services-page" aria-labelledby="services-title">
   <div class="page-inner">
-    <p class="eyebrow"><span class="eyebrow-line"></span> Explore services</p>
-    <h1 id="services-title">Care for your <em>sight.</em></h1>
-    <p class="page-lead">Browse the services currently offered at Dr Bhat Eye Clinic.</p>
+    <div class="services-intro">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Explore services</p>
+        <h1 id="services-title">Care for your <em>sight.</em></h1>
+        <p class="page-lead">Browse the services currently offered at Dr Bhat Eye Clinic.</p>
+      </div>
+      <figure class="page-visual services-visual">
+        <img src="image/slit-lamp-exam.jpg" alt="A patient receiving a slit-lamp eye examination" />
+        <figcaption>CARE FOR YOUR VISION</figcaption>
+      </figure>
+    </div>
 
     @if (isLoading()) {
       <p class="service-status" role="status">Loading clinic services...</p>
@@ -24,5 +32,13 @@
         }
       </div>
     }
+
+    <section class="services-cta" aria-label="Book an appointment">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Your next step</p>
+        <h2>Ready to book a visit?</h2>
+      </div>
+      <a class="primary-link" routerLink="/appointment">Book an appointment <span aria-hidden="true">&#8594;</span></a>
+    </section>
   </div>
 </section>

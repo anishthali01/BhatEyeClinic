@@ -1,8 +1,10 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ClinicServiceClient } from '../clinic-service.client';
 import { ClinicService } from '../clinic-service.model';
 
 @Component({
+  imports: [RouterLink],
   selector: 'app-services-page',
   templateUrl: './services.page.html',
 })

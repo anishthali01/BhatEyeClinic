@@ -1,9 +1,25 @@
 <section class="content-page appointment-page" aria-labelledby="appointment-title">
   <div class="page-inner appointment-inner">
-    <p class="eyebrow"><span class="eyebrow-line"></span> Appointment request</p>
-    <h1 id="appointment-title">Book a time<br />for <em>your care.</em></h1>
-    <p class="page-lead">Share a few details and choose a preferred appointment time.</p>
+    <div class="appointment-overview">
+      <p class="eyebrow"><span class="eyebrow-line"></span> Appointment request</p>
+      <h1 id="appointment-title">Book a time<br />for <em>your care.</em></h1>
+      <p class="page-lead">Share a few details and choose a preferred appointment time.</p>
 
+      <section class="appointment-hours" aria-labelledby="appointment-hours-title">
+        <div>
+          <h2 id="appointment-hours-title">Plan your visit</h2>
+        </div>
+        <div class="clinic-hours">
+          <dl>
+            <div><dt>Monday - Friday</dt><dd>9:00 AM - 2:00 PM<br />3:30 PM - 8:00 PM</dd></div>
+            <div><dt>Saturday</dt><dd>9:00 AM - 2:00 PM<br />3:30 PM - 6:00 PM</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+      </section>
+    </div>
+
+    <div class="appointment-form-column">
     @if (confirmation()) {
       <p class="form-message success-message" role="status">{{ confirmation() }}</p>
     }
@@ -86,5 +102,6 @@
         <span aria-hidden="true">&#8594;</span>
       </button>
     </form>
+    </div>
   </div>
 </section>

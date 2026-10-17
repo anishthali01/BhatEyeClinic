@@ -18,7 +18,7 @@ a:focus-visible {
 }
 
 .page-inner {
-	width: min(1040px, 76%);
+	width: min(1120px, 84%);
 	margin-inline: auto;
 }
 
@@ -85,6 +85,7 @@ a:focus-visible {
 .home-inner {
 	position: relative;
 	z-index: 2;
+	width: min(1040px, 76%);
 	padding-block: 90px;
 	animation: arrive 650ms ease-out both;
 	margin-left: max(12%, calc((100% - 1040px) / 2));
@@ -98,7 +99,7 @@ a:focus-visible {
 .content-page h1 {
 	margin: 27px 0 22px;
 	font-family: "Iowan Old Style", "Baskerville", "Palatino Linotype", Georgia, serif;
-	font-size: clamp(64px, 8vw, 104px);
+	font-size: 96px;
 	font-weight: 400;
 	line-height: 0.98;
 }
@@ -106,6 +107,10 @@ a:focus-visible {
 .home-page h1 em {
 	color: #d5e36b;
 	font-weight: 400;
+}
+
+.home-page h1 {
+	font-size: clamp(64px, 8vw, 104px);
 }
 
 .home-intro {
@@ -202,8 +207,8 @@ a:focus-visible {
 }
 
 .content-page {
-	min-height: 70vh;
-	padding: 92px 0 112px;
+	min-height: calc(100svh - 172px);
+	padding: 64px 0 84px;
 	background: #f5f5ef;
 }
 
@@ -212,7 +217,7 @@ a:focus-visible {
 }
 
 .content-page h1 {
-	font-size: clamp(48px, 6.2vw, 78px);
+	font-size: 70px;
 	line-height: 1.04;
 }
 
@@ -222,8 +227,8 @@ a:focus-visible {
 }
 
 .page-lead {
-	max-width: 550px;
-	margin: 0 0 58px;
+	max-width: 610px;
+	margin: 0 0 44px;
 	color: #63736b;
 	font-size: 14px;
 	line-height: 1.8;
@@ -234,12 +239,78 @@ a:focus-visible {
 	border-top: 1px solid #d3d8cf;
 }
 
-.principle-row {
+.care-intro,
+.services-intro {
 	display: grid;
-	grid-template-columns: 56px minmax(0, 1fr);
-	gap: 20px;
-	padding: 25px 0;
-	border-bottom: 1px solid #d3d8cf;
+	grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+	align-items: center;
+	gap: clamp(40px, 7vw, 100px);
+	margin-bottom: 52px;
+}
+
+.care-copy .page-lead,
+.services-intro .page-lead {
+	margin-bottom: 0;
+}
+
+.page-visual {
+	position: relative;
+	min-width: 0;
+	height: 300px;
+	margin: 0;
+	overflow: hidden;
+	background: #174b38;
+}
+
+.page-visual::after {
+	position: absolute;
+	inset: 45% 0 0;
+	background: linear-gradient(transparent, rgb(13 37 28 / 68%));
+	content: "";
+}
+
+.page-visual img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.page-visual figcaption {
+	position: absolute;
+	z-index: 1;
+	bottom: 18px;
+	left: 20px;
+	color: #fff;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 1.2px;
+}
+
+.care-visual img {
+	object-position: 56% center;
+}
+
+.services-visual img {
+	object-position: 64% center;
+}
+
+.principle-list {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.principle-row {
+	display: flex;
+	min-height: 205px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 28px;
+	padding: 22px 24px 24px 0;
+}
+
+.principle-row + .principle-row {
+	padding-left: 24px;
+	border-left: 1px solid #d3d8cf;
 }
 
 .principle-number,
@@ -276,8 +347,172 @@ a:focus-visible {
 
 .about-page .page-lead {
 	max-width: 650px;
-	margin-bottom: 74px;
+	margin-bottom: 54px;
 	font-size: 16px;
+}
+
+.doctors-section {
+	margin: 58px 0 74px;
+}
+
+.doctors-heading {
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 24px;
+}
+
+.doctors-heading h2,
+.approach-heading h2 {
+	margin: 14px 0 0;
+	color: #172e26;
+	font-family: "Iowan Old Style", Georgia, serif;
+	font-size: 40px;
+	font-weight: 400;
+	line-height: 1.08;
+}
+
+.doctor-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 20px;
+}
+
+.doctor-card {
+	display: grid;
+	min-width: 0;
+	min-height: 300px;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	background: transparent;
+}
+
+.doctor-card img {
+	width: 100%;
+	height: 100%;
+	min-height: 300px;
+	object-fit: cover;
+	object-position: center 24%;
+	filter: saturate(0.9);
+	-webkit-mask-image: radial-gradient(ellipse at 48% 44%, #000 28%, rgb(0 0 0 / 0.82) 43%, rgb(0 0 0 / 0.28) 68%, transparent 92%);
+	mask-image: radial-gradient(ellipse at 48% 44%, #000 28%, rgb(0 0 0 / 0.82) 43%, rgb(0 0 0 / 0.28) 68%, transparent 92%);
+}
+
+.doctor-bio {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 24px 20px;
+}
+
+.doctor-index {
+	color: #dd745e;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.doctor-bio h3 {
+	margin: 22px 0 8px;
+	color: #172e26;
+	font-family: "Iowan Old Style", Georgia, serif;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 1.08;
+}
+
+.doctor-credentials {
+	margin: 0 0 14px;
+	color: #174b38;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.5;
+}
+
+.doctor-bio > p:last-child {
+	margin: 0;
+	color: #63736b;
+	font-size: 11px;
+	line-height: 1.65;
+}
+
+.approach-section {
+	padding-top: 30px;
+	border-top: 1px solid #cbd5c9;
+}
+
+.approach-heading {
+	margin-bottom: 24px;
+}
+
+.clinic-details {
+	display: grid;
+	grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+	align-items: center;
+	gap: clamp(40px, 8vw, 110px);
+	margin-top: 58px;
+	padding: 34px 0;
+	border-top: 1px solid #cbd5c9;
+	border-bottom: 1px solid #cbd5c9;
+}
+
+.clinic-contact-heading .eyebrow {
+	margin-bottom: 18px;
+}
+
+.clinic-details h2 {
+	margin: 0;
+	color: #172e26;
+	font-family: "Iowan Old Style", Georgia, serif;
+	font-size: 36px;
+	font-weight: 400;
+}
+
+.clinic-details h2 em {
+	color: #dd745e;
+	font-weight: 400;
+}
+
+.clinic-contact address {
+	color: #63736b;
+	font-size: 13px;
+	font-style: normal;
+	line-height: 1.8;
+}
+
+.clinic-phone {
+	display: inline-block;
+	margin-top: 16px;
+	color: #174b38;
+	font-size: 13px;
+	font-weight: 700;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 4px;
+}
+
+.clinic-hours dl {
+	margin: 0;
+	border-top: 1px solid #cbd5c9;
+}
+
+.clinic-hours dl > div {
+	display: grid;
+	grid-template-columns: minmax(110px, 0.8fr) 1.2fr;
+	gap: 16px;
+	padding: 14px 0;
+	border-bottom: 1px solid #cbd5c9;
+	font-size: 12px;
+	line-height: 1.7;
+}
+
+.clinic-hours dt {
+	color: #172e26;
+	font-weight: 700;
+}
+
+.clinic-hours dd {
+	margin: 0;
+	color: #63736b;
 }
 
 .about-values {
@@ -287,8 +522,8 @@ a:focus-visible {
 }
 
 .about-values article {
-	min-height: 180px;
-	padding: 22px 22px 10px 0;
+	min-height: 170px;
+	padding: 20px 24px 20px 0;
 }
 
 .about-values article + article {
@@ -302,7 +537,30 @@ a:focus-visible {
 }
 
 .services-page .page-lead {
-	margin-bottom: 42px;
+	margin-bottom: 0;
+}
+
+.services-cta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 28px;
+	margin-top: 56px;
+	padding: 25px 28px;
+	background: #e8eee5;
+}
+
+.services-cta .eyebrow {
+	margin-bottom: 12px;
+	color: #174b38;
+}
+
+.services-cta h2 {
+	margin: 0;
+	color: #172e26;
+	font-family: "Iowan Old Style", Georgia, serif;
+	font-size: 27px;
+	font-weight: 400;
 }
 
 .service-row {
@@ -346,16 +604,44 @@ a:focus-visible {
 }
 
 .appointment-inner {
-	max-width: 780px;
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	align-items: start;
+	gap: clamp(36px, 6vw, 88px);
+	max-width: none;
 }
 
 .appointment-page .page-lead {
-	margin-bottom: 38px;
+	margin-bottom: 36px;
+}
+
+.appointment-hours {
+	margin-top: 32px;
+	padding: 24px 0 0;
+	border-top: 1px solid #cbd5c9;
+}
+
+.appointment-hours .eyebrow {
+	margin-bottom: 14px;
+}
+
+.appointment-hours h2 {
+	margin: 0;
+	color: #172e26;
+	font-family: "Iowan Old Style", Georgia, serif;
+	font-size: 32px;
+	font-weight: 400;
+}
+
+.appointment-form-column {
+	margin-top: 8px;
+	padding: 28px;
+	border-top: 3px solid #174b38;
+	background: #f5f5ef;
 }
 
 .appointment-form {
-	padding-top: 28px;
-	border-top: 1px solid #cbd5c9;
+	padding: 0;
 }
 
 .form-field {
@@ -473,17 +759,12 @@ a:focus-visible {
 	}
 
 	.home-inner {
-		padding-top: 86px;
+		padding-top: 68px;
+		padding-bottom: 270px;
 	}
 
 	.home-page h1 {
 		font-size: 62px;
-	}
-
-	.home-inner {
-		width: 88%;
-		padding-top: 68px;
-		padding-bottom: 270px;
 	}
 
 	.home-page::after {
@@ -498,11 +779,11 @@ a:focus-visible {
 	}
 
 	.content-page {
-		padding: 72px 0 84px;
+		padding: 48px 0 64px;
 	}
 
 	.content-page h1 {
-		font-size: clamp(46px, 12vw, 64px);
+		font-size: 46px;
 	}
 
 	.page-lead {
@@ -511,6 +792,96 @@ a:focus-visible {
 
 	.about-values {
 		grid-template-columns: 1fr;
+	}
+
+	.doctors-section {
+		margin: 42px 0 54px;
+	}
+
+	.doctors-heading {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.doctors-heading h2,
+	.approach-heading h2 {
+		font-size: 32px;
+	}
+
+	.doctor-grid {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 14px;
+	}
+
+	.doctor-card {
+		min-height: 230px;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+	}
+
+	.doctor-card img {
+		min-height: 230px;
+	}
+
+	.doctor-bio {
+		padding: 18px 14px;
+	}
+
+	.doctor-bio h3 {
+		margin-top: 18px;
+		font-size: 23px;
+	}
+
+	.care-intro,
+	.services-intro {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 28px;
+		margin-bottom: 36px;
+	}
+
+	.page-visual {
+		height: 240px;
+	}
+
+	.principle-list {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.principle-row {
+		min-height: unset;
+		gap: 14px;
+		padding: 20px 0;
+		border-bottom: 1px solid #d3d8cf;
+	}
+
+	.principle-row + .principle-row {
+		padding-left: 0;
+		border-top: 1px solid #d3d8cf;
+		border-left: 0;
+	}
+
+	.clinic-details {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 24px;
+		margin-top: 48px;
+	}
+
+	.clinic-details h2 {
+		font-size: 30px;
+	}
+
+	.appointment-inner {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 28px;
+	}
+
+	.appointment-hours {
+		margin-top: 25px;
+	}
+
+	.appointment-form-column {
+		margin: 0;
+		padding: 20px 16px;
 	}
 
 	.about-values article,
@@ -546,6 +917,16 @@ a:focus-visible {
 
 	.service-copy p {
 		font-size: 11px;
+	}
+
+	.services-cta {
+		align-items: flex-start;
+		flex-direction: column;
+		padding: 22px 18px;
+	}
+
+	.services-cta h2 {
+		font-size: 24px;
 	}
 }
 
